@@ -68,7 +68,9 @@ const Pokemons = () => {
     e.preventDefault();
     const newPokemon = await PokemonRequest(baseApiPath, pokemonName);
     if (!CheckPokemonExist(newPokemon)) {
-      SetPokemon([...pokemons, newPokemon]);
+      if (newPokemon.id > 0) {
+        SetPokemon([...pokemons, newPokemon]);
+      }
     } else {
       alert("The pokemon has already been caught");
     }
